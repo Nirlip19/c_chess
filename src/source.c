@@ -133,23 +133,24 @@ void handle_input(){
              case SDL_QUIT: 
 
                  is_loop_running = false ; 
-/*
+
              case SDL_MOUSEBUTTONDOWN: 
-/
+
                  if(event.button.button == SDL_BUTTON_LEFT){ 
 
-                //   update_piece_pose() ; 
-                //   witch_piece_is_selected() ; 
-
-
+                   update() ; 
+                   witch_piece_is_selected() ; 
                        
                  }
-                 */ 
               case SDL_KEYDOWN: 
 
                   switch( event.key.keysym.sym ){  
-                      case SDLK_f:    flip_board() ; break ;  
-                      case SDLK_r :   init_pieces() ; break ;  
+                      case SDLK_f:    
+                          flip_board() ;
+                          break ;  
+                      case SDLK_r : 
+                          init_pieces() ; 
+                          break ;  
                   } 
 
                  break ;
@@ -357,9 +358,8 @@ void render_settings(int r  , int g  , int b  ){
 
     SDL_RenderPresent( std_render) ; 
 } 
-/*
 
-void  witch_piece_is_selected(){ 
+void   witch_piece_is_selected(){ 
 
            int mouse_converted_x = (mouse_pose_x / 100) * 100  ;  
            int mouse_converted_y = (mouse_pose_y / 100) * 100  ;      
@@ -367,27 +367,31 @@ void  witch_piece_is_selected(){
            for( int i = 0 ; i < PIECE_NUM ; i++){ 
 
                  if( piece_list[i]->pose.x == mouse_converted_x && piece_list[i]->pose.y == mouse_converted_y){ 
-                       piece_list[i]->is_selected = true  ;  
+                      if( piece_list[i]->is_selected == true ) piece_list[i]->is_selected = false   ;  
+                      else if( piece_list[i]->is_selected == false ) piece_list[i]->is_selected = true    ;  
                        printf("found\n") ; 
+                       break ; 
                   }    
            } 
 
 } 
 
-void update_piece_pose(){
+void update_piece_pose(Piece * piece ){
            
            int mouse_converted_x = (mouse_pose_x / 100) * 100  ;  
-           int mouse_converted_y = (mouse_pose_y / 100) * 100  ;  
+           int mouse_converted_y = (mouse_pose_y / 100) * 100  ;
 
-           for( int i = 0 ; i <  PIECE_NUM ; i++){
-                 if( piece_list[i]->is_selected) 
-                      piece_list[i]->pose.x = mouse_converted_x ; 
-                      piece_list[i]->pose.y = mouse_converted_y ; 
+           if( piece->is_selected){ 
 
-           }  
+                piece->pose.x = mouse_converted_x ; 
+                piece->pose.y = mouse_converted_y ;  
+           }
 
 } 
+ 
+void update(){  
+    
+    for( int i = 0;  i< PIECE_NUM; i++)
+        update_piece_pose( piece_list[i]) ;    
 
-
-*/
-
+} 

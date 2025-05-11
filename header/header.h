@@ -9,6 +9,7 @@ extern SDL_Window * std_window ;
 extern SDL_Renderer * std_render ; 
 extern int mouse_pose_x ; 
 extern int mouse_pose_y ; 
+
 typedef struct { 
 
     int x; 
@@ -80,8 +81,9 @@ void load_piece(const char * ,Piece ) ;
 void init_pieces() ; 
 void move_piece() ; 
 
-void update_piece_pose() ; 
+void update_piece_pose( Piece * piece ) ; 
+void update()  ;
 
-
-void  witch_piece_is_selected() ;  
+void   witch_piece_is_selected() ;  
+void  load_moves() ; 
 #endif 
