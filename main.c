@@ -15,6 +15,7 @@ int main(){
 
 
      init_pieces() ; 
+     init_squares() ;  
      main_loop() ; 
 
      clean_up() ; 

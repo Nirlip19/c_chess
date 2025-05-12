@@ -59,6 +59,7 @@ Piece black_night2 ;
 
 Piece *piece_list[PIECE_NUM] ;   
 
+
 void flip_board(){
 
       if( whose_playing == WHITE)
@@ -138,6 +139,7 @@ void handle_input(){
 
                    update() ; 
                    witch_piece_is_selected() ; 
+                   print_s_state() ; 
                        
                  }
               case SDL_KEYDOWN: 
@@ -168,7 +170,8 @@ void main_loop(){
 
       while( is_loop_running ){ 
            handle_input() ; 
-           render_settings( 255  , 255  , 255 ) ; 
+           render_settings( 255  , 255  , 255 ) ;  
+           connect_square_to_piece() ; 
 
         }  
 
@@ -224,6 +227,7 @@ void init_pieces(){
                       piece_list[index]->pose.y = y ; 
                       piece_list[index]->is_selected =false ; 
                       piece_list[index]->first_move = true; 
+
                       index++ ; 
                     
              } 
@@ -371,7 +375,6 @@ void   witch_piece_is_selected(){
                  if( piece_list[i]->pose.x == mouse_converted_x && piece_list[i]->pose.y == mouse_converted_y){ 
                       if( piece_list[i]->is_selected == true ) piece_list[i]->is_selected = false   ;  
                       else if( piece_list[i]->is_selected == false ) piece_list[i]->is_selected = true    ;  
-                       printf("found\n") ; 
                        break ; 
                   }    
            } 

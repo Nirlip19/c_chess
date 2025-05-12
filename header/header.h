@@ -1,6 +1,7 @@
 #ifndef HEADER
 #define HEADER 
 #include <SDL2/SDL.h> 
+#include <stdbool.h> 
 
 #define PIECE_NUM 32 
 
@@ -30,6 +31,7 @@ typedef struct {
      Pose pose ; 
      bool is_selected  ; 
      bool first_move ; 
+     Square * square ; 
 
 }  Piece ; 
 
@@ -95,4 +97,8 @@ void update()  ;
 
 void   witch_piece_is_selected() ;  
 void  load_moves() ; 
+void connect_square_to_piece() ; 
+
+void init_squares() ;  
+void print_s_state() ; 
 #endif 
