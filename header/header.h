@@ -17,13 +17,21 @@ typedef struct {
 
 } Pose ; 
 
+typedef struct{ 
+
+      Pose pose ; 
+      bool is_fill ; 
+
+
+} Square ; 
+
 typedef struct { 
 
      Pose pose ; 
      bool is_selected  ; 
+     bool first_move ; 
 
 }  Piece ; 
-
 
 extern Piece white_pawn1 ; 
 extern Piece white_pawn2 ; 
@@ -65,6 +73,7 @@ extern Piece black_night2 ;
 
 
 extern Piece * piece_list[PIECE_NUM] ;   
+extern Square squears[64] ; 
 
 void create_window(const char *,int, int , int,int ,SDL_WindowFlags  ) ; 
 void create_renderer() ;

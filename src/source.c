@@ -15,7 +15,6 @@ enum player{ WHITE , BLACK } ;
 
 bool whose_playing = WHITE  ; 
 
-
 int mouse_pose_x ; 
 int mouse_pose_y ; 
 
@@ -59,7 +58,6 @@ Piece black_night2 ;
 
 
 Piece *piece_list[PIECE_NUM] ;   
-
 
 void flip_board(){
 
@@ -225,6 +223,7 @@ void init_pieces(){
                       piece_list[index]->pose.x = x ; 
                       piece_list[index]->pose.y = y ; 
                       piece_list[index]->is_selected =false ; 
+                      piece_list[index]->first_move = true; 
                       index++ ; 
                     
              } 
@@ -237,6 +236,7 @@ void init_pieces(){
                       piece_list[index]->pose.x =x ; 
                       piece_list[index]->pose.y = y ; 
                       piece_list[index]->is_selected =false ; 
+                      piece_list[index]->first_move = true; 
                       index++ ; 
               } 
 
@@ -251,6 +251,7 @@ void init_pieces(){
                       piece_list[index]->pose.x = x ; 
                       piece_list[index]->pose.y = y ; 
                       piece_list[index]->is_selected =false ; 
+                      piece_list[index]->first_move = true; 
                       index++ ; 
                     
              } 
@@ -263,6 +264,7 @@ void init_pieces(){
                      piece_list[index]->pose.x =x ; 
                      piece_list[index]->pose.y = y ; 
                      piece_list[index]->is_selected =false ; 
+                     piece_list[index]->first_move = true; 
                      index++ ;  
               } 
 
